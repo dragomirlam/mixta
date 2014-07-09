@@ -2,6 +2,10 @@ doctype html
 html
   head
     link(rel='stylesheet', href='/stylesheets/style.css')
+
+    link(rel='stylesheet', href='/stylesheets/gallery-css/dist/gallery.theme.css')
+    link(rel='stylesheet', href='/stylesheets/gallery-css/dist/gallery.prefixed.css')
+    link(rel='stylesheet', href='/stylesheets/gallery-css/vendor/normalize.css')
   body
     #header
         a(href="#")
@@ -19,10 +23,24 @@ html
                         a(href="#") contact
                     li
                         a(href="#") about
+    #carousel
+        div(class="gallery autoplay items-3")
+            #items-1.control-operator
+            #items-2.control-operator
+            #items-3.control-operator
+            
+            figure.item
+                h1 first
+            figure.item
+                h1 second
+            figure.item
+                h1 third
+
+            .controls
+                a(href="#item-1" class="control-button") •
+                a(href="#item-2" class="control-button") •
+                a(href="#item-3" class="control-button") •
+
     #container
         img(src="http://dreamchimney.com/oftheday/otd_images/20110527044721_auto.jpg")
-        //- img(src="http://dreamchimney.com/oftheday/otd_images/20110527044721_auto.jpg")
-        //- p this is just a paragraph!
-        //- h2 bottom!
-        //- img(src="/images/cocktails.jpg")
     #footer are coming soon..
