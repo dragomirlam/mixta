@@ -8,6 +8,7 @@ var routes = require('./routes');
 var user = require('./routes/user');
 var http = require('http');
 var path = require('path');
+var mongoose = require('mongoose');
 
 var app = express();
 
@@ -19,10 +20,21 @@ app.use(express.favicon());
 app.use(express.logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded());
+app.use(express.bodyParser());
 app.use(express.methodOverride());
 app.use(app.router);
 app.use(require('less-middleware')(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
+
+mongoose.connect("mongodb://localhost/mixta");
+
+var spiritSchema = new mongoose.Schema({
+	name: String,
+	vol: Number,
+	category: String
+});
+
+Spirits = mongoose.model('Spirits', spiritSchema);
 
 // development only
 if ('development' == app.get('env')) {
@@ -34,6 +46,13 @@ app.get('/', function(req, res){
 });
 
 app.get('/users', user.list);
+
+app.get('/spirits', function(req, res){
+	Spirits.find({}, function(err, docs){
+		res.render('spirits.jade', { spirits: docs });
+	});
+	// res.render("spirits.jade");
+});
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
