@@ -9,6 +9,7 @@ var user = require('./routes/user');
 var http = require('http');
 var path = require('path');
 var mongoose = require('mongoose');
+var Spirits = require('./models/spirit.js');
 
 var app = express();
 
@@ -28,15 +29,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 mongoose.connect("mongodb://localhost/mixta");
 
-var spiritSchema = new mongoose.Schema({
-	name: String,
-	vol: Number,
-	category: String,
-	color: String
 
-});
-
-Spirits = mongoose.model('Spirits', spiritSchema);
 
 // development only
 if ('development' == app.get('env')) {
