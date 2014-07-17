@@ -31,7 +31,9 @@ mongoose.connect("mongodb://localhost/mixta");
 var spiritSchema = new mongoose.Schema({
 	name: String,
 	vol: Number,
-	category: String
+	category: String,
+	color: String
+
 });
 
 Spirits = mongoose.model('Spirits', spiritSchema);
