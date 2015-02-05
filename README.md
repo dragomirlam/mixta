@@ -1,3 +1,3 @@
 ## mixtα
 
-A web application that will rock your cocktails nights.
+A web application that will rock your cocktails nights!
